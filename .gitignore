@@ -1,0 +1,51 @@
+# ── macOS ──────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# ── Xcode ──────────────────────────────────────
+# 빌드 산출물
+build/
+DerivedData/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# 사용자별 Xcode 상태 (윈도우 위치, 브레이크포인트 등 — 커밋 금지)
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# .xcodeproj 는 project.yml(XcodeGen)에서 생성하는 산출물이므로 커밋하지 않음.
+# 진실원본은 project.yml 이다 → 받은 뒤 `xcodegen generate` 로 생성한다.
+*.xcodeproj/
+
+# ── Swift Package Manager ──────────────────────
+.build/
+.swiftpm/
+# Package.resolved 는 의존성 버전 고정을 위해 커밋 유지
+
+# ── CocoaPods / Carthage (사용 시) ─────────────
+Pods/
+Carthage/Build/
+
+# ── Python (make_icon.py) ──────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# ── Claude Code ────────────────────────────────
+# 공통 설정(settings.json)은 커밋, 개인 설정(권한·MCP 등)은 제외
+.claude/settings.local.json
+
+# ── 기타 ───────────────────────────────────────
+*.log
+*.swp
+.idea/
+.vscode/

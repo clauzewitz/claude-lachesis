@@ -1,0 +1,61 @@
+# project.yml — XcodeGen 프로젝트 정의 (Lachesis.xcodeproj 의 진실원본)
+#
+# 이 파일이 .xcodeproj 를 '생성'한다. .xcodeproj 는 더 이상 손으로 관리하지
+# 않으며 git 에서 무시된다(.gitignore). 새 Swift 파일은 Lachesis/ 에 두기만
+# 하면 다음 명령으로 자동 등록된다 (pbxproj 4곳 수동 편집 불필요):
+#
+#     xcodegen generate
+#
+# 설치: brew install xcodegen
+#
+# 주의(CLAUDE.md 제약 충실 재현):
+#  - 샌드박스 off: entitlements 파일을 만들지 않는다(=샌드박스 없음). ~/.claude 읽기용.
+#  - Info.plist 파일 없음: GENERATE_INFOPLIST_FILE=YES + INFOPLIST_KEY_* 빌드설정으로 처리.
+#    (info: 블록을 쓰면 실제 Info.plist 파일이 생기므로 쓰지 않는다.)
+#  - 배포 타깃 macOS 13. macOS 14+ 전용 API 금지(런타임 호환).
+#  - XcodeGen 은 전통적 PBXGroup 형식을 생성한다(폴더 동기화 synchronized
+#    group 아님). 단 pbxproj objectVersion 은 77 로 고정되어 빌드에는
+#    Xcode 16 이상이 필요하다(XcodeGen 2.45 가 하드코딩, 옵션으로 못 낮춤).
+
+name: Lachesis
+
+options:
+  bundleIdPrefix: local
+  deploymentTarget:
+    macOS: "13.0"
+  # Xcode 새 프로젝트 기본 빌드설정을 주입(프로젝트 레벨 설정 자동 보충)
+  settingPresets: all
+
+targets:
+  Lachesis:
+    type: application
+    platform: macOS
+    sources:
+      - path: Lachesis
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: local.Lachesis
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_VERSION: "5.0"
+
+        # 메뉴 막대 전용 앱 (Dock 아이콘 없음) + Info.plist 파일 없이 생성
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+
+        # 앱 아이콘
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        COMBINE_HIDPI_IMAGES: YES
+
+        # 로컬 실행용 서명 (App Store 배포 아님, 하드닝 런타임 off)
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_HARDENED_RUNTIME: NO
+
+        SWIFT_EMIT_LOC_STRINGS: YES
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/../Frameworks"

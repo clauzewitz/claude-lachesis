@@ -162,7 +162,7 @@ struct UsageCard: View {
                         .foregroundStyle(.secondary)
                 } else if let e = estimate {
                     HStack(alignment: .firstTextBaseline, spacing: 1) {
-                        Text("\(Int(e.percent))")
+                        Text("\(Int(e.percent.rounded()))")
                             .font(.system(size: 22, weight: .bold, design: .monospaced))
                             .foregroundStyle(barColor(e.percent))
                         Text("%")

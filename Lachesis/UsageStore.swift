@@ -77,7 +77,7 @@ final class UsageStore: ObservableObject {
     var menuBarText: String {
         guard let s = session else { return "–" }
         guard s.isActive else { return "휴식" }
-        return "\(Int(s.percent))%"
+        return "\(Int(s.percent.rounded()))%"
     }
 
     /// 메뉴 막대 글자 색: 70% 주황 / 90% 빨강, 그 외는 기본색(nil).
@@ -115,7 +115,7 @@ final class UsageStore: ObservableObject {
                 UserDefaults.standard.set(true, forKey: key)
                 sendNotification(
                     title: "\(name) 사용량 \(Int(threshold))% 도달 (추정)",
-                    body: "현재 약 \(Int(percent))%를 사용했습니다. 한도 관리에 참고하세요.")
+                    body: "현재 약 \(Int(percent.rounded()))%를 사용했습니다. 한도 관리에 참고하세요.")
             }
             break   // 가장 높은 임계값 하나만 알립니다.
         }

@@ -16,10 +16,10 @@ final class UsageStore: ObservableObject {
     @Published var isLoading = false
 
     // ── 설정 (앱을 껐다 켜도 유지됩니다)
-    @AppStorage("limitMode") var limitModeRaw: String = LimitMode.auto.rawValue
-    @AppStorage("manualSessionLimitM") var manualSessionLimitM: Double = 50
-    @AppStorage("manualWeeklyLimitM") var manualWeeklyLimitM: Double = 300
-    @AppStorage("manualSonnetWeeklyLimitM") var manualSonnetWeeklyLimitM: Double = 300
+    @AppStorage("limitMode") var limitModeRaw: String = LimitMode.manual.rawValue
+    @AppStorage("manualSessionLimitM") var manualSessionLimitM: Double = 17
+    @AppStorage("manualWeeklyLimitM") var manualWeeklyLimitM: Double = 176
+    @AppStorage("manualSonnetWeeklyLimitM") var manualSonnetWeeklyLimitM: Double = 39
     @AppStorage("weeklyAnchorEnabled") var weeklyAnchorEnabled: Bool = true   // 기본: 앵커 켬
     @AppStorage("weeklyAnchorWeekday") var weeklyAnchorWeekday: Int = 2      // 월요일
     @AppStorage("weeklyAnchorMinutes") var weeklyAnchorMinutes: Int = 600    // 오전 10:00

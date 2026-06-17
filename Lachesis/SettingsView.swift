@@ -12,10 +12,10 @@ struct SettingsView: View {
     @EnvironmentObject var store: UsageStore
 
     // 영속 저장소 (같은 키). '적용' 때만 여기에 씁니다.
-    @AppStorage("limitMode") private var sLimitMode: String = LimitMode.auto.rawValue
-    @AppStorage("manualSessionLimitM") private var sManualSession: Double = 50
-    @AppStorage("manualWeeklyLimitM") private var sManualWeekly: Double = 300
-    @AppStorage("manualSonnetWeeklyLimitM") private var sManualSonnet: Double = 300
+    @AppStorage("limitMode") private var sLimitMode: String = LimitMode.manual.rawValue
+    @AppStorage("manualSessionLimitM") private var sManualSession: Double = 17
+    @AppStorage("manualWeeklyLimitM") private var sManualWeekly: Double = 176
+    @AppStorage("manualSonnetWeeklyLimitM") private var sManualSonnet: Double = 39
     @AppStorage("weeklyAnchorEnabled") private var sAnchorEnabled: Bool = true
     @AppStorage("weeklyAnchorWeekday") private var sAnchorWeekday: Int = 2     // 월요일
     @AppStorage("weeklyAnchorMinutes") private var sAnchorMinutes: Int = 600   // 오전 10:00
@@ -24,10 +24,10 @@ struct SettingsView: View {
     @AppStorage("notifyThresholdHigh") private var sNotifyHigh: Double = 90
 
     // 편집용 초안 (적용 전까지 저장소에 반영되지 않음)
-    @State private var limitModeRaw = LimitMode.auto.rawValue
-    @State private var manualSessionLimitM = 50.0
-    @State private var manualWeeklyLimitM = 300.0
-    @State private var manualSonnetWeeklyLimitM = 300.0
+    @State private var limitModeRaw = LimitMode.manual.rawValue
+    @State private var manualSessionLimitM = 17.0
+    @State private var manualWeeklyLimitM = 176.0
+    @State private var manualSonnetWeeklyLimitM = 39.0
     @State private var weeklyAnchorEnabled = true
     @State private var weeklyAnchorWeekday = 2      // 기본: 월요일
     @State private var weeklyAnchorMinutes = 600    // 기본: 오전 10:00
